@@ -1,70 +1,13 @@
 import React from "react";
 import "../app.css"
 
-function Card() {
-
-  let usersDetails = [
-    {   
-      id: 1,
-      name: "Akhilesh Singh",
-      age: 25,
-      phone: 9198212072,
-      email: "akhileshsin97@gmail.com"
-    },
-    {   
-      id: 2,
-      name: "Mukul Prasad",
-      age: 24,
-      phone: 9198223323,
-      email: "mukulp@gmail.com"
-    },
-    {   
-      id: 3,
-      name: "Ravi Gandu",
-      age: 26,
-      phone: 7905145708,
-      email: "ganduravi@gmail.com"
-    },
-    {   
-      id: 4,
-      name: "Amarjeet Yadav",
-      age: 23,
-      phone: 7905141512,
-      email: "yadavamar@gmail.com"
-    },
-    {   
-      id: 5,
-      name: "Jayesh Kumar",
-      age: 26,
-      phone: 8793793749,
-      email: "jayeshkumar@gmail.com"
-    },
-    {   
-      id: 6,
-      name: "Gaurav Yadav",
-      age: 26,
-      phone: 8900212072,
-      email: "gauravyadav@gmail.com"
-    },
-    {   
-      id: 7,
-      name: "Dharmendra Kanaujiya",
-      age: 22,
-      phone: 9198343333,
-      email: "dharmendra@gmail.com"
-    },
-    {   
-      id: 8,
-      name: "Sanjay Gupta",
-      age: 26,
-      phone: 637890733,
-      email: "sanjay@gmail.com"
-    }
-]  
-   
+function Card(props) {
+    
 const usersDetailsHandler = () => {
   return (
-    usersDetails.map((item, idx)=>{
+    props.usersDetails && 
+    props.usersDetails.length > 0 && 
+    props.usersDetails.map((item, idx)=>{
       return (
        <div className="cards" key={idx}>
         <div>
@@ -82,8 +25,18 @@ const usersDetailsHandler = () => {
 }
     
 return (
-    <div className="card-container">
-        {usersDetailsHandler()}
+    <div className={props.usersDetails && 
+      props.usersDetails.length > 0 ? "card-container" : "no-result-found"}>
+        {props.usersDetails && 
+         props.usersDetails.length > 0 
+         ? usersDetailsHandler()
+         : <div>
+            <img 
+              className="no-result-img" 
+              src="https://cdn.dribbble.com/users/1798580/screenshots/4221448/no-result-found-1.jpg"
+              alt="No result icon"
+            />
+          </div>}
     </div>
   );
 }

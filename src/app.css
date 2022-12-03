@@ -68,6 +68,8 @@ body{
 .filter-container{
     display: flex;
     gap: 15px;
+    align-items: center;
+    justify-content: center;
 }
 .users-modal{
  color: #ffffff;
@@ -80,3 +82,42 @@ body{
  border-radius: 2px;
  box-shadow: 0 3px 6px -4px rgb(0 0 0 / 12%), 0 6px 16px 0 rgb(0 0 0 / 8%), 0 9px 28px 8px rgb(0 0 0 / 5%);
 }
+
+.input-search{
+    border: none;
+    height: 15px;
+    width: 160px;
+    border-radius: 4px;
+    padding: 10px;  
+}
+
+input {
+    outline: none;
+  }
+  input:focus,
+  input:active {
+    border-color: transparent;
+  }
+  .no-result-found{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .no-result-img{
+    width: 65vw;
+    height: 80vh;
+  }
+  .filter-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+  }
+  .custom-select {
+    border: none;
+    height: 35px;
+    width: 130px;
+    border-radius: 4px;
+    padding: 10px;
+  }
+  
