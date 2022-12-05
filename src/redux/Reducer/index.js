@@ -24,19 +24,27 @@ const reducer = ( state = initialState, action ) => {
         case USER_CREATE:
             return {
                 ...state,
-                createUser: payload.data
+                createUser: payload.data,
+                userList: [payload.data, ...state.userList]
             }
-        // case USER_EDIT:
-        //     return {
-        //         ...state,
-        //         editedUserDetails: payload.data
-        //     }    
-        case USER_DELETE:
-            console.log("akki dele reducer",payload)
+        case USER_EDIT: {
+            const {userList} = state;
+            const filteredData = userList.filter((item) =>item._id != payload.data._id);
             return {
                 ...state,
-                userList: payload.data
-            }    
+                userList: [...filteredData, payload.data]
+            } 
+        }
+              
+        case USER_DELETE: {
+            const {userList} = state;
+            const filteredData = userList.filter((item) =>item._id != payload.data._id);
+            return {
+                ...state,
+                userList: filteredData
+            }   
+        }
+            
        default: return {
           ...state
        }
