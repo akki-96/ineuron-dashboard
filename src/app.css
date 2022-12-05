@@ -50,6 +50,7 @@ body{
 .userIcon{
     width: 150px;
     height: 150px;
+    padding: 10px;
 }
 .filter-icon{
     height: 25px;
@@ -120,4 +121,135 @@ input {
     border-radius: 4px;
     padding: 10px;
   }
-  
+  .userHeader{
+    padding: 15px;
+    background-color: purple;
+    color: white;
+    font-weight: bolder;
+    font-size: 22px;
+    font-family: "Apercu Pro";
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.cardsDetails{
+    display: flex;
+    justify-content: center;
+    border-radius: 5px;
+    display: block;
+    float: left;
+    width: 30%;
+    position: relative;
+    min-height: 320px;
+    cursor: pointer; 
+    border: 1px solid #cccccc;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.detailsContainer{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    flex-direction: column;
+    align-items: center;
+}
+.btnContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin: 15px;
+}
+.addBtnContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+.add{
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 8px 12px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+.edit{
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 8px 12px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 8px;
+}
+.cancel {
+    background-color: #f44336;; /* Green */
+    border: none;
+    color: white;
+    padding:8px 12px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 8px;
+}
+.reset {
+    background-color: #2bc4f2;; /* Green */
+    border: none;
+    color: white;
+    padding:8px 12px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 8px;
+}
+.fieldBox{
+    padding: 10px;
+}
+.inputBoxContainer{
+    width: 80%;
+    margin-bottom: 20px;
+}
+.inputField{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.textInput{
+    width: 80%;
+    border: none;
+    border-bottom: 2px solid #2cc4f2;;
+}
+.addUserContainer{
+    display: flex;
+    border-radius: 5px;
+    display: block;
+    float: left;
+    width: 30%;
+    position: relative;
+    min-height: 320px;
+    border: 1px solid #cccccc;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.validator{
+    color: red;
+    padding: 13px 0px 0px 0px;
+    font-weight: 600;
+}

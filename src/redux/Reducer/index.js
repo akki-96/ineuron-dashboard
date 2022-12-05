@@ -1,8 +1,10 @@
-import { USER_DETAILS, USER_LIST } from "../Constant";
+import { USER_DETAILS, USER_LIST, USER_EDIT, USER_DELETE, USER_CREATE } from "../Constant";
 
 const initialState = {
     userList: [],
-    userDetais: "",
+    userDetails: "",
+    createUser:"",
+    editedUserDetails:"",
     isLoading: false
 }
 
@@ -17,8 +19,27 @@ const reducer = ( state = initialState, action ) => {
         case USER_DETAILS:
             return {
                 ...state,
-                userDetais: payload.data
+                userDetails: payload.data
             }
+        case USER_CREATE:
+            return {
+                ...state,
+                createUser: payload.data
+            }
+        // case USER_EDIT:
+        //     return {
+        //         ...state,
+        //         editedUserDetails: payload.data
+        //     }    
+        case USER_DELETE:
+            console.log("akki dele reducer",payload)
+            return {
+                ...state,
+                userList: payload.data
+            }    
+       default: return {
+          ...state
+       }
     }
 }
 

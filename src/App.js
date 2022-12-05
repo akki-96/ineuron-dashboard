@@ -1,97 +1,95 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Header from "./component/header";
 import Card from "./component/card";
-function App() {
-  let usersDetails = [
-    {   
-      id: 1,
-      name: "Akhilesh Singh",
-      age: 25,
-      phone: 9198212072,
-      email: "akhileshsin97@gmail.com"
-    },
-    {   
-      id: 2,
-      name: "Mukul Prasad",
-      age: 24,
-      phone: 9198223323,
-      email: "mukulp@gmail.com"
-    },
-    {   
-      id: 3,
-      name: "Ravi Gandu",
-      age: 26,
-      phone: 7905145708,
-      email: "ganduravi@gmail.com"
-    },
-    {   
-      id: 4,
-      name: "Amarjeet Yadav",
-      age: 23,
-      phone: 7905141512,
-      email: "yadavamar@gmail.com"
-    },
-    {   
-      id: 5,
-      name: "Jayesh Kumar",
-      age: 26,
-      phone: 8793793749,
-      email: "jayeshkumar@gmail.com"
-    },
-    {   
-      id: 6,
-      name: "Gaurav Yadav",
-      age: 26,
-      phone: 8900212072,
-      email: "gauravyadav@gmail.com"
-    },
-    {   
-      id: 7,
-      name: "Dharmendra Kanaujiya",
-      age: 22,
-      phone: 9198343333,
-      email: "dharmendra@gmail.com"
-    },
-    {   
-      id: 8,
-      name: "Sanjay Gupta",
-      age: 26,
-      phone: 637890733,
-      email: "sanjay@gmail.com"
-    }
-  ] 
-  const [searchedDetails, setSearchDetails] = useState(usersDetails);
+import { useDispatch, useSelector } from "react-redux" 
+import { getUserList, getUserDetails, deleteUser}  from "./redux/Action"
+import SpecificUserDetails from "./component/specificUserDetails"
+import store from "./redux/Store";
+import AddUser from "./component/addUser";
 
-  const searchUserDetails = (e) => {
-    let searchedData = usersDetails.filter((item) => {
+function App() {
+  const dispatch = useDispatch();
+
+  const store = useSelector((store)=> store);
+
+  useEffect(()=> {
+    getUserList(dispatch);
+  }, [store.userList]);
+
+  const userList = store.userList;
+  const userDetails = store.userDetails;
+
+  const [flag, setFlag] = useState(false);
+  const [searchedDetails, setSearchDetails] = useState(!flag ? store.userList : []);
+
+  const handleUserDetails = (userId) => {
+    getUserDetails(dispatch,userId);
+  }  
+ 
+  const handleDeleteUser = (userId) => {
+    deleteUser(dispatch, userId);
+  }
+
+  const searchUserDetails = (searchString) => {
+    let searchedData = userList.filter((item) => {
         return Object.values(item)
         .join(" ")
         .toLowerCase()
-        .includes(e.target.value)
+        .includes(searchString)
     })
-    if(e.target.value !== ""){
+    if(searchString !== "") {
       setSearchDetails(searchedData);
     } else {
-      setSearchDetails(usersDetails);
+      setSearchDetails(userList);
     }
   }
 
-  const handleSorting = () =>{
-
+  const handleSorting = (selectedOption) => {
+    let sortedData;
+    if(selectedOption === "fiterBy") {
+      setFlag(true);
+      setSearchDetails(userList);
+    } else if(selectedOption === "sortName") {
+      sortedData = userList.sort((a,b)=>a.firstName.toLowerCase() > b.firstName.toLowerCase() ? 1 : -1);
+      setFlag(true);
+      setSearchDetails(sortedData);
+    } else if(selectedOption === "byAge") {
+      sortedData = userList.sort((a,b)=>a.age > b.age ? 1 : -1);
+      setFlag(true);
+      setSearchDetails(sortedData);
+    }
   }
   
-  const handleFilter = () =>{
-    
+  const handleFilter = (selectedOption) => {
+    let filterData;
+    if(selectedOption === "sortBy") {
+      setFlag(true);
+      setSearchDetails(userList);
+    } else if(selectedOption === "ageAbove18") {
+      filterData = userList.filter((item)=> item.age >= 18);
+      setFlag(true)
+      setSearchDetails(filterData);
+    } else if(selectedOption === "ageBelow18") {
+      filterData = userList.filter((item)=> item.age < 18);
+      setFlag(true);
+      setSearchDetails(filterData);
+    }
   }
 
   return (
     <div className="App">
-      <Header searchUserDetails={searchUserDetails}/>
-      <Card
-       usersDetails={searchedDetails}
-       handleFilter={handleFilter}
-       handleSorting={handleSorting}
-       />
+        <Header 
+          searchUserDetails={searchUserDetails}
+          handleFilter={handleFilter}
+          handleSorting={handleSorting}
+        />
+        <Card
+          userList={userList}
+          handleUserDetails={handleUserDetails}
+          handleDeleteUser={handleDeleteUser}
+        />
+        {/* <SpecificUserDetails /> */}
+      <AddUser />
     </div>
   );
 }
