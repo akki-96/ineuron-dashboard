@@ -173,7 +173,7 @@ const AddUser = (props) => {
                   <span className="label">Mobile : </span>
                   <input
                     className="textInput"
-                    placeholder="phoneNumber number"
+                    placeholder="Phone number"
                     type="number"
                     value={state.phoneNumber}
                     onChange={mobileNameHandler}
