@@ -6,7 +6,7 @@ export const  getUserList = (dispatch) => {
     fetch(userList, {
         method: 'GET',
         headers: {
-          'Content-Type':'application/json;charset=utf-8'
+          'Content-Type': 'application/json'
         },
       })
       .then((value) => value.json())
@@ -27,7 +27,7 @@ export const getUserDetails = (dispatch, userId) => {
     fetch(`${userDetails}/${userId} `, {
       method: 'GET',
       headers: {
-        'Content-Type':'application/json;charset=utf-8'
+        'Content-Type': 'application/json'
       },
     })
     .then((value) => value.json())
@@ -48,7 +48,7 @@ export const deleteUser = (dispatch, userId) => {
     fetch(`${userDetails}/${userId}`, {
      method: "DELETE",
       headers: {
-        'Content-Type':'application/json;charset=utf-8'
+        'Content-Type': 'application/json'
       },
     })
       .then((value) => value.json())
@@ -69,7 +69,7 @@ export const editUser = (dispatch, data, userId) => {
     let bodyContent = {
       method:"PATCH",
       headers: {
-        'Content-Type':'application/json;charset=utf-8'
+        'Content-Type': 'application/json'
       },
       body: JSON.stringify(data),
     };
@@ -91,7 +91,7 @@ export const createUser = (dispatch, data) => {
     let bodyContent = {
       method: "POST",
       headers: {
-        'Content-Type':'*'
+        'Content-Type': 'application/json'
       },
       body: JSON.stringify(data),
     };
