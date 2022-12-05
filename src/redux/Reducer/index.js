@@ -38,7 +38,7 @@ const reducer = ( state = initialState, action ) => {
               
         case USER_DELETE: {
             const {userList} = state;
-            const filteredData = userList.filter((item) =>item._id != payload.data._id);
+            const filteredData = userList.filter((item) =>item._id != payload);
             return {
                 ...state,
                 userList: filteredData

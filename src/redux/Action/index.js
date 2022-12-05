@@ -55,7 +55,7 @@ export const deleteUser = (dispatch, userId) => {
       .then((data) => {
         dispatch({
           type: USER_DELETE,
-          payload: data,
+          payload: userId,
         }) 
       })
       .catch((err) => console.log(err));
