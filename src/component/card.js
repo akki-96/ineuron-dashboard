@@ -23,7 +23,6 @@ function Card(props) {
                 alt="User Icon"
               />
             </div>
-            {console.log("akki date",new Date(item.createdAt))}
             <div>
               <div className="card-details">
                 Name: {item.firstName} {item.lastName}
