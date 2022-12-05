@@ -11,7 +11,6 @@ const AddUser = (props) => {
       lastName ,
       age,
       phoneNumber,
-      createdAt,
       _id
     } = props.userDetails
   }
@@ -21,8 +20,7 @@ const AddUser = (props) => {
     firstName:  "",
     lastName: "",
     age: "",
-    mobile: "",
-    createdAt: "",
+    phoneNumber: "",
   });
 
   useEffect(() => {
@@ -30,8 +28,8 @@ const AddUser = (props) => {
       firstName: props.isEdit ? firstName : "",
       lastName: props.isEdit ? lastName : "",
       age: props.isEdit ? age : "",
-      mobile: props.isEdit ? phoneNumber : "",
-      createdAt: props.isEdit ? new Date(createdAt).toLocaleDateString() : "",
+      phoneNumber: props.isEdit ? phoneNumber : "",
+      // createdAt: props.isEdit ? new Date(createdAt).toLocaleDateString() : "",
     })
   }, [props.userDetails])
 
@@ -53,22 +51,24 @@ const AddUser = (props) => {
   };
 
   const mobileNameHandler = (e) => {
-    setState({ ...state, mobile: e.target.value });
-    setValidate(false);
+    if(e.target.value.length <= 10){
+      setState({ ...state, phoneNumber: e.target.value });
+      setValidate(false);
+    }
   };
 
-  const dateNameHandler = (e) => {
-    setState({ ...state, createdAt: createdDate(e.target.value) });
-    setValidate(false);
-  };
+  // const dateNameHandler = (e) => {
+  //   setState({ ...state, createdAt: createdDate(e.target.value) });
+  //   setValidate(false);
+  // };
 
   const _handleResetUser = () => {
     setState({
       firstName: "",
       lastName: "",
       age: "",
-      mobile: "",
-      createdAt: "",
+      phoneNumber: "",
+      // createdAt: "",
     });
   };
 
@@ -77,8 +77,7 @@ const AddUser = (props) => {
       state.firstName != "" &&
       state.lastName != "" &&
       state.age != "" &&
-      state.mobile != "" &&
-      state.createdAt != ""
+      state.phoneNumber != ""
     ) {
       setValidate(false);
       createUser(dispatch, state);
@@ -93,8 +92,7 @@ const AddUser = (props) => {
       state.firstName != "" &&
       state.lastName != "" &&
       state.age != "" &&
-      state.mobile != "" &&
-      state.createdAt != ""
+      state.phoneNumber != ""
     ) {
       setValidate(false);
       editUser(dispatch, state, _id);
@@ -175,14 +173,14 @@ const AddUser = (props) => {
                   <span className="label">Mobile : </span>
                   <input
                     className="textInput"
-                    placeholder="Mobile number"
+                    placeholder="phoneNumber number"
                     type="number"
-                    value={state.mobile}
+                    value={state.phoneNumber}
                     onChange={mobileNameHandler}
                   />
                 </span>
               </div>
-              <div className="fieldBox">
+              {/* <div className="fieldBox">
                 <span className="inputField">
                 <span className="label">Created date : </span>
                   <input
@@ -193,7 +191,7 @@ const AddUser = (props) => {
                     onChange={dateNameHandler}
                   />
                 </span>
-              </div>
+              </div> */}
             </div>
           </div>
           {validate && (

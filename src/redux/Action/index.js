@@ -1,5 +1,5 @@
 import { USER_LIST, USER_DETAILS, USER_DELETE, USER_CREATE, USER_EDIT } from "../Constant";
-import { userList, userDetails } from "../../apiEndPoints"
+import { userList, userDetails, createUserApi} from "../../apiEndPoints"
  
 export const  getUserList = (dispatch) => {
   try {
@@ -91,11 +91,11 @@ export const createUser = (dispatch, data) => {
     let bodyContent = {
       method: "POST",
       headers: {
-        'Content-Type':'application/json;charset=utf-8'
+        'Content-Type':'*'
       },
       body: JSON.stringify(data),
     };
-   fetch("https://blue-journalist-bbrpv.ineuron.app:4000/user/create", bodyContent)
+   fetch(createUserApi, bodyContent)
       .then((value) => value.json())
       .then((data) => {
         dispatch({
