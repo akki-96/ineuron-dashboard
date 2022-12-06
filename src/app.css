@@ -21,19 +21,15 @@ body{
 }
 .cards{
     display: flex;
-    justify-content: center;
-    border-radius: 5px;
-    display: block;
-    float: left;
-    width: 24%;
-    position: relative;
-    min-height: 266px;
-    cursor: pointer; 
-    border: 1px solid #cccccc;
-    display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    border-radius: 5px;
+    /* width: calc(25% -100px); */
+    width: 24%;
+    min-height: 266px;
+    cursor: pointer; 
+    border: 1px solid #cccccc;
 }
 .cards:hover{
     background: #ffffff;
@@ -239,7 +235,7 @@ input {
     border-radius: 5px;
     display: block;
     float: left;
-    width: 30%;
+    width: 36%;
     position: relative;
     min-height: 320px;
     border: 1px solid #cccccc;
@@ -248,15 +244,136 @@ input {
     align-items: center;
     justify-content: center;
 }
-.validator{
-    color: red;
-    padding: 13px 0px 0px 0px;
-    font-weight: 600;
-}
 .backIcon{
     width: 35px;
     height: 35px;
 }
 .label{
     width: 30%;
+}
+.validators{
+    color: red;
+    font-size: small;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+}
+
+@media screen and (min-width: 360px ) and (max-width: 480px) {
+    .card-container {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 15px;
+        padding: 15px;
+    }
+    .cards{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        border-radius: 5px;
+        width: 70%;
+        min-height: 266px;
+        cursor: pointer; 
+        border: 1px solid #cccccc;
+    } 
+    .addUserContainer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        border-radius: 5px;
+        width: 90%;
+        min-height: 320px;
+        border: 1px solid #cccccc;
+    }
+    .textInput {
+        width: 70%;
+        border: none;
+        border-bottom: 2px solid #2cc4f2;
+    }
+    .fieldBox {
+        padding: 10px;
+        width: 100%;
+    }
+}
+@media screen and (min-width: 481px ) and (max-width: 765px) {
+    .card-container {
+        display: flex;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        gap: 15px;
+        padding: 15px;
+    }
+    .cards{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        border-radius: 5px;
+        width: 47%;
+        min-height: 266px;
+        cursor: pointer; 
+        border: 1px solid #cccccc;
+    } 
+    .addUserContainer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        border-radius: 5px;
+        width: 90%;
+        min-height: 320px;
+        border: 1px solid #cccccc;
+       
+    }
+}
+@media screen and (min-width: 766px ) and (max-width: 1024px) {
+    .card-container {
+        display: flex;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        gap: 15px;
+        padding: 15px;
+    }
+    .cards{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        border-radius: 5px;
+        width: 31%;
+        min-height: 266px;
+        cursor: pointer; 
+        border: 1px solid #cccccc;
+    } 
+    .addUserContainer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border-radius: 5px;
+        width: 70%;
+        min-height: 320px;
+        border: 1px solid #cccccc;
+    }
+}
+
+@media screen and (min-width: 1025px ) and (max-width: 1200px) {
+    .addUserContainer {
+        display: flex;
+        border-radius: 5px;
+        display: block;
+        float: left;
+        width: 50%;
+        position: relative;
+        min-height: 320px;
+        border: 1px solid #cccccc;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
 }

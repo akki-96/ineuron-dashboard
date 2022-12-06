@@ -33,27 +33,30 @@ const AddUser = (props) => {
     })
   }, [props.userDetails])
 
-  const [validate, setValidate] = useState(false);
+  const [vname, setVname] = useState(false);
+  const [lvname, setLvname] = useState(false);
+  const [vgae, setVage] = useState(false);
+  const [vmobile, setVmobile] = useState(false);
 
   const firstNameHandler = (e) => {
     setState({ ...state, firstName: e.target.value });
-    setValidate(false);
+    setVname(false);
   };
 
   const lastNameHandler = (e) => {
     setState({ ...state, lastName: e.target.value });
-    setValidate(false);
+    setLvname(false);
   };
 
   const ageNameHandler = (e) => {
     setState({ ...state, age: e.target.value });
-    setValidate(false);
+    setVage(false);
   };
 
   const mobileNameHandler = (e) => {
     if(e.target.value.length <= 10){
       setState({ ...state, phoneNumber: e.target.value });
-      setValidate(false);
+      setVmobile(false);
     }
   };
 
@@ -79,11 +82,25 @@ const AddUser = (props) => {
       state.age != "" &&
       state.phoneNumber != ""
     ) {
-      setValidate(false);
+      setVname(false);
+      setLvname(false);
+      setVage(false);
+      setVmobile(false);
       createUser(dispatch, state);
       history('/');
     } else {
-      setValidate(true);
+      if(state.firstName == "" ) {
+        setVname(true);
+      }
+      if(state.lastName == ""){
+        setLvname(true);
+      }
+      if(state.age == "") {
+        setVage(true);
+      }
+      if(state.phoneNumber == ""){
+        setVmobile(true);
+      }
     }
   };
 
@@ -94,12 +111,26 @@ const AddUser = (props) => {
       state.age != "" &&
       state.phoneNumber != ""
     ) {
-      setValidate(false);
+      setVname(false);
+      setLvname(false);
+      setVage(false);
+      setVmobile(false);
       editUser(dispatch, state, _id);
-       history('/');
+      history('/');
       
     } else {
-      setValidate(true);
+      if(state.firstName == "" ) {
+        setVname(true);
+      }
+      if(state.lastName == ""){
+        setLvname(true);
+      }
+      if(state.age == "") {
+        setVage(true);
+      }
+      if(state.phoneNumber == ""){
+        setVmobile(true);
+      }
     }
   }
 
@@ -143,6 +174,11 @@ const AddUser = (props) => {
                     onChange={firstNameHandler}
                   />
                 </span>
+                {vname && 
+                  <div className="validators">
+                    First name should not be empty
+                  </div>
+                }
               </div>
               <div className="fieldBox">
                 <span className="inputField">
@@ -155,6 +191,11 @@ const AddUser = (props) => {
                     onChange={lastNameHandler}
                   />
                 </span>
+                {lvname && 
+                  <div className="validators">
+                    Last name should not be empty
+                  </div>
+                }
               </div>
               <div className="fieldBox">
                 <span className="inputField">
@@ -167,6 +208,11 @@ const AddUser = (props) => {
                     onChange={ageNameHandler}
                   />
                 </span>
+                {vgae && 
+                  <div className="validators">
+                    Age should not be empty
+                  </div>
+                }
               </div>
               <div className="fieldBox">
                 <span className="inputField">
@@ -179,6 +225,11 @@ const AddUser = (props) => {
                     onChange={mobileNameHandler}
                   />
                 </span>
+                {vmobile && 
+                  <div className="validators">
+                    Phone number should not be empty
+                  </div>
+                }
               </div>
               {/* <div className="fieldBox">
                 <span className="inputField">
@@ -194,9 +245,6 @@ const AddUser = (props) => {
               </div> */}
             </div>
           </div>
-          {validate && (
-            <div className="validator">All fields are mandatory</div>
-          )}
           <div className="btnContainer">
             <button className="reset" onClick={_handleResetUser}>
               Reset
