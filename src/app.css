@@ -261,6 +261,10 @@ input {
 }
 
 @media screen and (min-width: 320px ) and (max-width: 480px) {
+    .inputBoxContainer {
+        width: 86%;
+        margin-bottom: 20px;
+    }
     .card-container {
         display: flex;
         justify-content: center;
