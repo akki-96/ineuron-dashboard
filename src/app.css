@@ -269,20 +269,21 @@ input {
         display: flex;
         justify-content: center;
         flex-wrap: wrap;
+        width: 90%;
         gap: 15px;
         padding: 15px;
     }
-    .cards{
+    .cards {
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
         border-radius: 5px;
-        width: 70%;
+        width: 90%;
         min-height: 266px;
-        cursor: pointer; 
+        cursor: pointer;
         border: 1px solid #cccccc;
-    } 
+    }
     .addUserContainer {
         display: flex;
         flex-direction: column;
@@ -307,25 +308,25 @@ input {
         background-color: purple;
         color: white;
         font-weight: bolder;
-        font-size: 22px;
+        font-size: 13px;
         font-family: "Apercu Pro";
         display: flex;
-        justify-content: center;
+        /* justify-content: center; */
         align-items: center;
-        flex-wrap: wrap;
+        /* flex-wrap: wrap; */
     }
     .filter-container {
         display: flex;
         justify-content: center;
         align-items: center;
         gap: 10px;
-        margin-top: 8px;
+        /* margin-top: 8px; */
     }
     .add {
         background-color: #4CAF50;
         border: none;
         color: white;
-        padding: 8px 12px;
+        padding: 6px 8px;
         text-align: center;
         text-decoration: none;
         display: inline-block;
@@ -335,8 +336,8 @@ input {
     }
     .input-search {
         border: none;
-        height: 10px;
-        width: 152px;
+        height: 6px;
+        width: 80px;
         border-radius: 4px;
         padding: 10px;
     }
