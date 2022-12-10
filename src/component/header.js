@@ -4,7 +4,7 @@ import "../app.css";
 function Header(props) {
   return (
     <div className="header">
-      <div>iNeuron Admin Dashboard</div>
+      <div>iNeuron Dashboard</div>
       <div className="filter-container">
         <div className="addBtnContainer">
           <Link to="/add">
