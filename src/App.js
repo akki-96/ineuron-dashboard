@@ -21,9 +21,7 @@ function App() {
   const userDetails = store.userDetails;
 
   const [flag, setFlag] = useState(false);
-  const [searchedDetails, setSearchDetails] = useState(
-    !flag ? store.userList : []
-  );
+  const [searchedDetails, setSearchDetails] = useState();
 
   const handleUserDetails = (userId) => {
     getUserDetails(dispatch, userId);
@@ -39,8 +37,10 @@ function App() {
     });
     if (searchString !== "") {
       setSearchDetails(searchedData);
+      setFlag(true);
     } else {
       setSearchDetails(userList);
+      setFlag(false);
     }
   };
 
@@ -93,7 +93,7 @@ function App() {
                   handleSorting={handleSorting}
                 />
                 <Card
-                  userList={userList}
+                  userList={flag ? searchedDetails : userList}
                   handleUserDetails={handleUserDetails}
                   handleDeleteUser={handleDeleteUser}
                 />
