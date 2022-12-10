@@ -11,14 +11,14 @@ function Header(props) {
             <button className="add">Add User</button>
           </Link>
         </div>
-        {/* <div>
+        <div>
           <input
             className="input-search"
             placeholder="Search"
             onChange={(e) => props.searchUserDetails(e.target.value)}
           />
         </div>
-        <div className="filter-container">
+        {/* <div className="filter-container">
           <div>
             <select
               onChange={(e) => props.handleFilter(e.target.value)}
